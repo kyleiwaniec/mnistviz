@@ -1,5 +1,6 @@
-node_modules
-.DS_Store
-*.log
 coverage
 .idea
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
