@@ -54,26 +54,16 @@ if (isDeveloping) {
 } else {
   app.use(express.static(__dirname + '/dist'));
   app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    const index = path.join(__dirname, 'dist', 'index.html');
+    res.sendFile(index);
   });
-
-  /*
-
-app.get('*', function (req, res) {
-  const index = path.join(__dirname, 'build', 'index.html');
-  res.sendFile(index);
-});
-
-
-  */
-
 
 
 }
 app.use(SSE);
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({limit: '70mb'}));
+app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
 
 initRoutes(app);
 registerRoutes();
