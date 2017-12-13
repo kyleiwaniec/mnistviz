@@ -48,14 +48,27 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler));
 
   app.get('/', function response(req, res) {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
+    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist', 'index.html')));
     res.end();
   });
 } else {
   app.use(express.static(__dirname + '/dist'));
   app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
+
+  /*
+
+app.get('*', function (req, res) {
+  const index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
+});
+
+
+  */
+
+
+
 }
 app.use(SSE);
 
